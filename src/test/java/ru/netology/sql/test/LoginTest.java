@@ -21,7 +21,7 @@ public class LoginTest {
     }
 
     @AfterAll
-    static void setupAfter() {
+    static void tearDownAll() {
         SQLHelper.deleteTestDataFromCardTransaction();
         SQLHelper.deleteTestDataFromCards();
         SQLHelper.deleteTestDataFromAuthCodes();
