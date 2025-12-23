@@ -2,11 +2,11 @@ package ru.netology.sql.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import ru.netology.sql.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
+import static ru.netology.sql.data.DataHelper.generateInvalidPassword;
 
 public class LoginPage {
     private final SelenideElement loginField = $("[data-test-id=login] input");
@@ -25,7 +25,7 @@ public class LoginPage {
         loginButton.click();
     }
 
-    public void invalidLogin(DataHelper.AuthInfo info, Faker faker) {
+    public void invalidLogin(DataHelper.AuthInfo info, String locale) {
         loginField
                 .doubleClick()
                 .press(Keys.DELETE)
@@ -33,7 +33,7 @@ public class LoginPage {
         passwordField
                 .doubleClick()
                 .press(Keys.DELETE)
-                .setValue(faker.internet().password());
+                .setValue(generateInvalidPassword(locale));
         loginButton.click();
     }
 

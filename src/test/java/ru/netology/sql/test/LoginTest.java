@@ -10,8 +10,6 @@ import ru.netology.sql.data.DataHelper;
 import ru.netology.sql.data.SQLHelper;
 import ru.netology.sql.page.LoginPage;
 
-import java.util.Locale;
-
 public class LoginTest {
     private LoginPage loginPage;
 
@@ -40,9 +38,9 @@ public class LoginTest {
     @Test
     void shouldFailedLoginByInvalidPassword() {
         var info = DataHelper.getAuthInfo(); //получаю юзера
-        loginPage.invalidLogin(info, new Faker(new Locale("en"))); // первый раз авторизуюсь с неверным паролем
-        loginPage.invalidLogin(info, new Faker(new Locale("en"))); // второй раз авторизуюсь с неверным паролем
-        loginPage.invalidLogin(info, new Faker(new Locale("en"))); // третий раз авторизуюсь с неверным паролем
+        loginPage.invalidLogin(info, "en"); // первый раз авторизуюсь с неверным паролем
+        loginPage.invalidLogin(info, "en"); // второй раз авторизуюсь с неверным паролем
+        loginPage.invalidLogin(info, "en"); // третий раз авторизуюсь с неверным паролем
         loginPage.checkErrorMessage("Система заблокирована");
     }
 }
